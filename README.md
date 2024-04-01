@@ -34,11 +34,11 @@ Este proyecto tiene como objetivo desarrollar una aplicación web que consuma la
 5. Explora la sección de gráficos para obtener información visual sobre los Pokémon.
 
 ¡Disfruta explorando la aplicación y descubriendo la información fascinante sobre los Pokémon! Si tienes alguna pregunta o sugerencia, no dudes en abrir un problema en este repositorio.
-
 ---
 
-## Recursos adicionales
 
+## Recursos adicionales
+- [Proyecto de Pokémon](https://renzofantu.github.io/Pokemon-Api/): Link para ver este proyecto.
 - [API de Pokémon](https://pokeapi.co/): Documentación oficial de la API de Pokémon.
 - [Chart.js](https://www.chartjs.org/): Documentación oficial de Chart.js para crear gráficos interactivos.
 
