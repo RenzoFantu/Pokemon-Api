@@ -91,11 +91,15 @@ const fetchApi = async (event) => {
               'Experiencia',
               'Movimientos',
               'Peso',
+              'order',
+              'altura'
               
             ],
             datasets: [{
                 label: 'SUPERPODERES',
-                data: [response.data.base_experience, response.data.moves.length,response.data.weight],
+                data: [response.data.base_experience, response.data.moves.length,response.data.weight, response.data.order, response.data.height
+
+                ],
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgb(255, 99, 132)',
