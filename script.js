@@ -49,7 +49,7 @@ const inputName = async () => {
         const respName = await axios.get(urlName);
         const dataName = await respName.data.results;
         const mapName = await dataName.map(data => data.name);
-        console.log(mapName.data);
+        console.log(mapName);
 
         const pokeNameDom = document.querySelector('.pokemon-name');
 
@@ -66,12 +66,14 @@ const inputName = async () => {
 };
 
 inputName();
-    
 
 
 
 
 
+// Definir el gráfico fuera de la función fetchApi
+const ctx = document.getElementById('myChart');
+let myChart;
 
 const fetchApi = async (event) => {
     event.preventDefault();
@@ -79,60 +81,71 @@ const fetchApi = async (event) => {
     try {
         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
         const response = await axios.get(url);
-        
+
         console.log(response.data);
-        showPokemon(response.data); // esto es igual a pokemon
-        const ctx = document.getElementById('myChart');
+        showPokemon(response.data);
 
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: [
-              'Experiencia',
-              'Movimientos',
-              'Peso',
-              'order',
-              'altura'
-              
-            ],
-            datasets: [{
-                label: 'SUPERPODERES',
-                data: [response.data.base_experience, response.data.moves.length,response.data.weight, response.data.order, response.data.height
-
-                ],
-                fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
-              }]
-            },
-        options: {
-            elements: {
-                line: {
-                    borderWidth: 3
+        // Actualizar los datos del gráfico en lugar de crear uno nuevo
+        if (myChart) {
+            myChart.data.datasets[0].data = [
+                response.data.base_experience,
+                response.data.moves.length,
+                response.data.weight,
+                response.data.order,
+                response.data.height
+            ];
+            myChart.update();
+        } else {
+            // Si el gráfico no existe, crear uno nuevo
+            myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Experiencia',
+                        'Movimientos',
+                        'Peso',
+                        'order',
+                        'altura'
+                    ],
+                    datasets: [{
+                        label: 'SUPERPODERES',
+                        data: [
+                            response.data.base_experience,
+                            response.data.moves.length,
+                            response.data.weight,
+                            response.data.order,
+                            response.data.height
+                        ],
+                        fill: true,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        pointBackgroundColor: 'rgb(255, 99, 132)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                    }]
+                },
+                options: {
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
-
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            });
         }
-    });
-    pokemonName = document.querySelector('input').value = "";
-    
-    
-    
+
+        document.querySelector('input').value = "";
     } catch (error) {
-        console.log('error al obtene data desde la API: ', error);
+        console.log('error al obtener data desde la API: ', error);
     }
-}
+};
+
 
 const showPokemon = (pokemon) => {
     const img = document.createElement('img');
@@ -140,13 +153,13 @@ const showPokemon = (pokemon) => {
     img.src = pokemon.sprites.front_default;
     h3.textContent = pokemon.name;
     const pokemonContainer = document.querySelector('.pokemon-container');
-    pokemonContainer.textContent = '';
+    pokemonContainer.innerHTML = '';
     pokemonContainer.appendChild(img);
     pokemonContainer.appendChild(h3);
 
-    
-    
-    
+
+
+
 }
 
 
