@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Reddit+Mono:wght@200..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    body{
+        font-family: "Comfortaa", sans-serif !important;
+        color: #4362B2 !important;
+}
+
+}
+.container{
+    margin: 0 !important;
+    width: 100%;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+}
+.pokemon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.mi-chart-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    
+   
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #4362B2;
+    padding: 20px;
+    width: 50%;
+    border-radius: 30px;
+    border: #F6D00B 3px solid;
+}
+ul{
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+.pokemon-name{
+    width: 50%;
+    text-decoration: none !important;
+    border: #4362B2 3px solid;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: #F6D00B;
+    
+}
+.poke-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+button{
+    background-color: #F6D00B !important;
+    color: #4362B2 !important;
+}
+button:hover{
+    background-color: #bf9f02 !important;
+    color: aliceblue !important;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.portada{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ img{
+    max-width: 30vh;
+ }
